@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/16 16:10:48 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/16 17:22:25 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <stdlib.h>
 # include <unistd.h>
+# include "./includes/libft/libft.h"
+# include "./includes/ft_printf/ft_printf.h"
 
 /*/		STACK MANAGEMENT		/*/
 typedef struct s_node {
