@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/16 15:09:54 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/16 16:10:48 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-/*/		STACK MANAGEMENT	/*/
+/*/		STACK MANAGEMENT		/*/
 typedef struct s_node {
 	int				val;
 	struct s_node	*prev;
@@ -27,6 +27,11 @@ typedef struct s_top {
 	t_node	*top;
 	t_node	*bottom;
 }				t_top;
+
+int		init_stack(t_top *stack);
+int		free_stack(t_top top_node);
+int		add_on_stack(t_top *stack, int val);
+t_node	*top_or_bottom(t_node node, int mode);
 
 static inline void	swap(t_top *stack_one, t_top *stack_two)
 {
@@ -85,6 +90,22 @@ static inline void	reverse_rotate(t_top *stack)
 	bot_node->prev = NULL;
 	bot_node->next = top_node;
 	top_node->prev = bot_node;
+}
+
+/*/		PARSING MANAGEMENT		/*/
+
+int		check_tab(char **form_args);
+int		check_args(int argc, char **argv);
+char	**formate_args(int argc, char **argv);
+
+static inline void	double_tab_free(char **tab)
+{
+	int	i;
+
+	i = 0;
+	while (tab[i])
+		free(tab[i++]);
+	free(tab);
 }
 
 #endif
