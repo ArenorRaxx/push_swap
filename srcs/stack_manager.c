@@ -6,14 +6,14 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:24:24 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/16 14:15:21 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/16 15:14:13 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <stdlib.h>
 
-int	init_stack(t_top	*stack)
+int	init_stack(t_top *stack)
 {
 	t_node	*first_node;
 
@@ -49,11 +49,11 @@ int	add_on_stack(t_top *stack, int val)
 }
 
 // If mode, go to top. Else, go to bottom.
-t_node	*top_or_bottom(t_node *node, int mode)
+t_node	*top_or_bottom(t_node node, int mode)
 {
 	t_node	*curr_node;
 
-	curr_node = node;
+	curr_node = &node;
 	if (mode)
 		while (curr_node->next)
 			curr_node = curr_node->next;
