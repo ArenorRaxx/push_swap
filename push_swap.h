@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/17 23:22:57 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/17 23:42:06 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		init_stack(t_top *stack);
 int		free_stack(t_top *top_node);
 int		fill_stack(t_top *stack_a, char **form_args);
 int		add_on_top_or_bottom(t_top *stack, int val, int mode);
-void	display_stack(t_top stack_a);
+void	display_stack(t_top stack_a, char stack);
 
 /*/		LOGICAL MOVEMENTS		/*/
 void	swap(t_top *stack_a, t_top *stack_b, char swap);
@@ -67,7 +67,8 @@ static inline void	logic_push(t_top *stack_one, t_top *stack_two)
 	top_node_two = stack_two->top;
 	stack_one->top = top_node_two;
 	stack_two->top = top_node_two->next;
-	top_node_one->prev = top_node_two;
+	if (top_node_one)
+		top_node_one->prev = top_node_two;
 	top_node_two->next = top_node_one;
 	stack_one->len++;
 	stack_two->len--;
