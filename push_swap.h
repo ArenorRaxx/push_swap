@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/17 10:33:31 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/17 15:45:55 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int		init_stack(t_top **stack);
 int		free_stack(t_top *top_node);
 int		fill_stack(t_top *stack_a, char **form_args);
 int		add_on_top_or_bottom(t_top *stack, int val, int mode);
+void	display_stack(t_top stack_a);
 
 static inline void	swap(t_top *stack_one, t_top *stack_two)
 {

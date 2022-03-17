@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:24:24 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/17 15:24:25 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/17 15:58:04 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,25 @@ int	fill_stack(t_top *stack_a, char **form_args)
 	i = 0;
 	while (form_args[i])
 	{
-		ft_printf("ok\n");
 		val = ft_atoi(form_args[i]);
-		if (add_on_top_or_bottom(stack_a, val, 0) < 0)
+		if (!i)
+			stack_a->top->val = val;
+		else if (add_on_top_or_bottom(stack_a, val, 0) < 0)
 			return (-1);
 		i++;
 	}
 	return (0);
 }
 
+void	display_stack(t_top stack_a)
+{
+	t_node	*curr_node;
+
+	curr_node = stack_a.top;
+	ft_printf("Stack A\n-------\n");
+	while (curr_node)
+	{
+		ft_printf("%i\n-------\n", curr_node->val);
+		curr_node = curr_node->next;
+	}
+}
