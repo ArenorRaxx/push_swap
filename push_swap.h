@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/17 15:45:55 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/17 17:00:39 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ typedef struct s_top {
 	t_node	*bottom;
 }				t_top;
 
-int		init_stack(t_top **stack);
+int		init_stack(t_top *stack);
 int		free_stack(t_top *top_node);
 int		fill_stack(t_top *stack_a, char **form_args);
 int		add_on_top_or_bottom(t_top *stack, int val, int mode);
