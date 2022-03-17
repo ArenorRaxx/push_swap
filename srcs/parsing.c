@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 15:14:51 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/17 15:55:41 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/17 18:08:12 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,7 @@ char	**formate_args(int argc, char **argv)
 
 	i = 0;
 	ret = NULL;
-	if (argc == 2)
-		ret = ft_split(argv[1], ' ');
-	else if (argc > 2)
+	if (argc >= 2)
 	{
 		ret = malloc(sizeof(*ret) * (argc));
 		while (++i < argc)
