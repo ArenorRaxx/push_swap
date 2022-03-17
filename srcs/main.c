@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:15:46 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/17 23:24:51 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/17 23:43:45 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,12 @@ static int	error(t_top *stack_a, t_top *stack_b)
 	exit (-1);
 }
 
-void	display_stack(t_top stack_a)
+void	display_stack(t_top stack_a, char stack)
 {
 	t_node	*curr_node;
 
 	curr_node = stack_a.top;
-	ft_printf("Stack A\n-------\n");
+	ft_printf("Stack %c\n-------\n", stack);
 	while (curr_node)
 	{
 		ft_printf("%i\n-------\n", curr_node->val);
@@ -63,6 +63,12 @@ int	main(int argc, char **argv)
 		free(formated_args);
 	if (err < 0)
 		return (error(&stack_a, &stack_b));
-	display_stack(stack_a);
+	display_stack(stack_a, 'A');
+	push(&stack_a, &stack_b, 'b');
+	rotate(&stack_a, &stack_b, 'a');
+	push(&stack_a, &stack_b, 'a');
+	display_stack(stack_a, 'A');
+	display_stack(stack_b, 'B');
 	free_stack(&stack_a);
+	free_stack(&stack_b);
 }
