@@ -6,7 +6,7 @@
 #    By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 13:03:03 by mcorso            #+#    #+#              #
-#    Updated: 2022/03/16 17:31:52 by mcorso           ###   ########.fr        #
+#    Updated: 2022/03/16 17:47:24 by mcorso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ HEAD			=	./
 
 #	FILES
 SRC_FILE		=	main.c \
+					parsing.c \
 					stack_manager.c
 
 OBJS			=	$(addprefix $(OBJ_DIR), $(SRC_FILE:.c=.o))
@@ -52,10 +53,10 @@ $(LIBFT_LIB)	:
 					make -C $(LIBFT)
 
 $(OBJ_DIR)%.o	:	$(SRC_DIR)%.c
-					$(CC) $(CFLAGS) $(PRINTF_INC) $(LIBFT_INC) -I $(HEAD) -o $@ -c $<
+					$(CC) $(CFLAGS) $(PRINTF_INC) $(LIBFT_INC) -I$(HEAD) -o $@ -c $<
 
 $(NAME)			:	$(OBJS)
-					$(CC) $(OBJS) $(PRINTF_LINK) $(LIBFT_LINK) -o $(NAME)
+					$(CC) -o $(NAME) $(OBJS) $(PRINTF_LINK) $(LIBFT_LINK)
 
 clean			:
 					rm -rf $(OBJ_DIR)

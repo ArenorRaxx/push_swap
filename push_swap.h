@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/16 17:22:25 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/17 10:33:31 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,10 @@ typedef struct s_top {
 	t_node	*bottom;
 }				t_top;
 
-int		init_stack(t_top *stack);
-int		free_stack(t_top top_node);
-int		add_on_stack(t_top *stack, int val);
-t_node	*top_or_bottom(t_node node, int mode);
+int		init_stack(t_top **stack);
+int		free_stack(t_top *top_node);
+int		fill_stack(t_top *stack_a, char **form_args);
+int		add_on_top_or_bottom(t_top *stack, int val, int mode);
 
 static inline void	swap(t_top *stack_one, t_top *stack_two)
 {
@@ -97,17 +97,7 @@ static inline void	reverse_rotate(t_top *stack)
 /*/		PARSING MANAGEMENT		/*/
 
 int		check_tab(char **form_args);
-int		check_args(int argc, char **argv);
+int		check_args(char **form_args);
 char	**formate_args(int argc, char **argv);
-
-static inline void	double_tab_free(char **tab)
-{
-	int	i;
-
-	i = 0;
-	while (tab[i])
-		free(tab[i++]);
-	free(tab);
-}
 
 #endif
