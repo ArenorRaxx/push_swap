@@ -6,12 +6,27 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:24:24 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/17 17:05:54 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/17 23:20:58 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 #include <stdlib.h>
+
+int	stack_len(t_top stack)
+{
+	int		len;
+	t_node	*curr_node;
+
+	len = 0;
+	curr_node = stack.top;
+	while (curr_node)
+	{
+		curr_node = curr_node->next;
+		len++;
+	}
+	return (len);
+}
 
 int	init_stack(t_top *stack)
 {
@@ -54,12 +69,12 @@ int	add_on_top_or_bottom(t_top *stack, int val, int mode)
 	return (0);
 }
 
-int	free_stack(t_top *top_node)
+int	free_stack(t_top *stack)
 {
 	t_node	*next_node;
 	t_node	*curr_node;
 
-	curr_node = top_node->top;
+	curr_node = stack->top;
 	while (curr_node)
 	{
 		next_node = curr_node->next;
@@ -84,18 +99,6 @@ int	fill_stack(t_top *stack_a, char **form_args)
 			return (-1);
 		i++;
 	}
+	stack_a->len = stack_len(*stack_a);
 	return (0);
-}
-
-void	display_stack(t_top stack_a)
-{
-	t_node	*curr_node;
-
-	curr_node = stack_a.top;
-	ft_printf("Stack A\n-------\n");
-	while (curr_node)
-	{
-		ft_printf("%i\n-------\n", curr_node->val);
-		curr_node = curr_node->next;
-	}
 }

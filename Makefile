@@ -6,7 +6,7 @@
 #    By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 13:03:03 by mcorso            #+#    #+#              #
-#    Updated: 2022/03/16 17:47:24 by mcorso           ###   ########.fr        #
+#    Updated: 2022/03/17 23:20:21 by mcorso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ HEAD			=	./
 #	FILES
 SRC_FILE		=	main.c \
 					parsing.c \
+					move_manager.c \
 					stack_manager.c
 
 OBJS			=	$(addprefix $(OBJ_DIR), $(SRC_FILE:.c=.o))
