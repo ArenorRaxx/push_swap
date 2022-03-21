@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:15:46 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/17 23:43:45 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/18 15:54:13 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,17 +58,14 @@ int	main(int argc, char **argv)
 	t_top	stack_b;
 
 	stack_b.top = NULL;
+	if (argc == 1)
+		return (0);
 	err = init(&stack_a, argc, argv, &formated_args);
 	if (formated_args)
 		free(formated_args);
 	if (err < 0)
 		return (error(&stack_a, &stack_b));
 	display_stack(stack_a, 'A');
-	push(&stack_a, &stack_b, 'b');
-	rotate(&stack_a, &stack_b, 'a');
-	push(&stack_a, &stack_b, 'a');
-	display_stack(stack_a, 'A');
-	display_stack(stack_b, 'B');
 	free_stack(&stack_a);
 	free_stack(&stack_b);
 }
