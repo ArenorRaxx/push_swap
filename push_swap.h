@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/17 23:42:06 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/23 10:32:24 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,9 @@ static inline void	logic_reverse_rotate(t_top *stack)
 int		check_tab(char **form_args);
 int		check_args(char **form_args);
 char	**formate_args(int argc, char **argv);
+
+/*/		RESOLVER & ALGO			/*/
+
+int		resolver(t_top *stack_a, t_top *stack_b, int argc);
 
 #endif
