@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/23 10:32:24 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/03/23 17:57:02 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,10 @@ static inline void	logic_swap(t_top *stack)
 	top_node->prev = sec_node;
 	top_node->next = sec_node->next;
 	sec_node->next = top_node;
+	if (top_node->next)
+		top_node->next->prev = top_node;
+	if (stack->len == 2)
+		stack->bottom = top_node;
 }
 
 static inline void	logic_push(t_top *stack_one, t_top *stack_two)
@@ -97,6 +101,7 @@ static inline void	logic_reverse_rotate(t_top *stack)
 	bot_node = stack->bottom;
 	stack->top = bot_node;
 	stack->bottom = bot_node->prev;
+	stack->bottom->next = NULL;
 	bot_node->prev = NULL;
 	bot_node->next = top_node;
 	top_node->prev = bot_node;
@@ -111,5 +116,6 @@ char	**formate_args(int argc, char **argv);
 /*/		RESOLVER & ALGO			/*/
 
 int		resolver(t_top *stack_a, t_top *stack_b, int argc);
+void	proto_sort(t_top *stack_a, t_top *stack_b);
 
 #endif
