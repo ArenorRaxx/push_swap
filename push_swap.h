@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/23 17:57:02 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/04/23 10:54:28 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,16 @@ typedef struct s_node {
 	struct s_node	*next;
 }				t_node;
 
+typedef struct s_inst {
+	char			*instruct;
+	struct s_inst	*prev;
+	struct s_inst	*next;
+}				t_inst;
+
+typedef struct s_intop {
+	t_inst	*top;
+}				t_intop;
+
 typedef struct s_top {
 	int		len;
 	t_node	*top;
@@ -35,7 +45,7 @@ int		stack_len(t_top stack);
 int		init_stack(t_top *stack);
 int		free_stack(t_top *top_node);
 int		fill_stack(t_top *stack_a, char **form_args);
-int		add_on_top_or_bottom(t_top *stack, int val, int mode);
+int		add_on_bot(t_top *stack, int val);
 void	display_stack(t_top stack_a, char stack);
 
 /*/		LOGICAL MOVEMENTS		/*/
@@ -116,6 +126,5 @@ char	**formate_args(int argc, char **argv);
 /*/		RESOLVER & ALGO			/*/
 
 int		resolver(t_top *stack_a, t_top *stack_b, int argc);
-void	proto_sort(t_top *stack_a, t_top *stack_b);
 
 #endif
