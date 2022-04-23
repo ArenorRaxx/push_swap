@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:24:20 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/23 10:55:39 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/04/23 10:28:26 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,35 @@ static int	is_sorted(t_top stack_a)
 	return (-1);
 }
 
+static void	sort_three(t_top *stack_a)
+{
+	if (stack_a->top->val > stack_a->top->next->val)
+	{
+		if (stack_a->top->next->val < stack_a->bottom->val)
+		{
+			if (stack_a->top->val > stack_a->bottom->val)
+				rotate(stack_a, NULL, 'a');
+			else
+				swap(stack_a, NULL, 'a');
+		}
+		else
+		{
+			swap(stack_a, NULL, 'a');
+			rev_rotate(stack_a, NULL, 'a');
+		}
+	}
+	else
+	{
+		if (stack_a->top->val > stack_a->bottom->val)
+			rev_rotate(stack_a, NULL, 'a');
+		else
+		{
+			swap(stack_a, NULL, 'a');
+			rotate(stack_a, NULL, 'a');
+		}
+	}
+}
+
 int	resolver(t_top *stack_a, t_top *stack_b, int argc)
 {
 	if (argc < 2)
@@ -37,7 +66,8 @@ int	resolver(t_top *stack_a, t_top *stack_b, int argc)
 	{
 		if (is_sorted(*stack_a) == 0)
 			return (0);
-		proto_sort(stack_a, stack_b);
+		else if (argc == 4)
+			sort_three(stack_a);
 	}
 	return (0);
 }
