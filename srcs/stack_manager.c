@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:24:24 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/17 23:20:58 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/04/22 15:59:25 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ int	init_stack(t_top *stack)
 }
 
 // If mode, add on top. Else, add on bottom.
-int	add_on_top_or_bottom(t_top *stack, int val, int mode)
+int	add_on_bot(t_top *stack, int val)
 {
 	t_node	*new_node;
 
@@ -52,20 +52,10 @@ int	add_on_top_or_bottom(t_top *stack, int val, int mode)
 	if (!new_node)
 		return (-1);
 	new_node->val = val;
-	if (mode)
-	{
-		new_node->prev = NULL;
-		new_node->next = stack->top;
-		stack->top->prev = new_node;
-		stack->top = new_node;
-	}
-	else
-	{
-		new_node->next = NULL;
-		new_node->prev = stack->bottom;
-		stack->bottom->next = new_node;
-		stack->bottom = new_node;
-	}
+	new_node->next = NULL;
+	new_node->prev = stack->bottom;
+	stack->bottom->next = new_node;
+	stack->bottom = new_node;
 	return (0);
 }
 
@@ -95,7 +85,7 @@ int	fill_stack(t_top *stack_a, char **form_args)
 		val = ft_atoi(form_args[i]);
 		if (!i)
 			stack_a->top->val = val;
-		else if (add_on_top_or_bottom(stack_a, val, 0) < 0)
+		else if (add_on_bot(stack_a, val) < 0)
 			return (-1);
 		i++;
 	}
