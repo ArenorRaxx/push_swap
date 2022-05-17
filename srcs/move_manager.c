@@ -6,13 +6,13 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 22:39:52 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/23 16:36:11 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/04/26 17:43:09 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	swap(t_top *stack_a, t_top *stack_b, char swap)
+void	swap(t_top *stack_a, t_top *stack_b, char swap, int pseudo)
 {
 	int	print;
 
@@ -27,11 +27,11 @@ void	swap(t_top *stack_a, t_top *stack_b, char swap)
 		logic_swap(stack_b);
 		print = 1;
 	}
-	if (print)
+	if (print && !pseudo)
 		ft_printf("s%c\n", swap);
 }
 
-void	push(t_top *stack_a, t_top *stack_b, char swap)
+void	push(t_top *stack_a, t_top *stack_b, char swap, int pseudo)
 {
 	int	print;
 
@@ -46,11 +46,11 @@ void	push(t_top *stack_a, t_top *stack_b, char swap)
 		logic_push(stack_b, stack_a);
 		print = 1;
 	}
-	if (print)
+	if (print && !pseudo)
 		ft_printf("p%c\n", swap);
 }
 
-void	rotate(t_top *stack_a, t_top *stack_b, char swap)
+void	rotate(t_top *stack_a, t_top *stack_b, char swap, int pseudo)
 {
 	int	print;
 
@@ -65,11 +65,11 @@ void	rotate(t_top *stack_a, t_top *stack_b, char swap)
 		logic_rotate(stack_b);
 		print = 1;
 	}
-	if (print)
+	if (print && !pseudo)
 		ft_printf("r%c\n", swap);
 }
 
-void	rev_rotate(t_top *stack_a, t_top *stack_b, char swap)
+void	rev_rotate(t_top *stack_a, t_top *stack_b, char swap, int pseudo)
 {
 	int	print;
 
@@ -84,6 +84,6 @@ void	rev_rotate(t_top *stack_a, t_top *stack_b, char swap)
 		logic_reverse_rotate(stack_b);
 		print = 1;
 	}
-	if (print)
+	if (print && !pseudo)
 		ft_printf("rr%c\n", swap);
 }

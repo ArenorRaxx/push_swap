@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:15:46 by mcorso            #+#    #+#             */
-/*   Updated: 2022/04/23 11:26:14 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/04/26 17:53:58 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,9 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-static int	error(t_top *stack_a, t_top *stack_b)
+static int	error(t_top *stack_a)
 {
 	free_stack(stack_a);
-	free_stack(stack_b);
 	ft_printf("Error\n");
 	exit (-1);
 }
@@ -55,21 +54,15 @@ int	main(int argc, char **argv)
 	int		err;
 	char	**formated_args;
 	t_top	stack_a;
-	t_top	stack_b;
 
-	stack_b.top = NULL;
 	if (argc == 1)
 		return (0);
 	err = init(&stack_a, argc, argv, &formated_args);
+	if (formated_args)
+		free(formated_args);
 	if (err < 0)
-	{
-		if (formated_args)
-			free(formated_args);
-		return (error(&stack_a, &stack_b));
-	}
+		return (error(&stack_a));
 	display_stack(stack_a, 'A');
-	resolver(&stack_a, &stack_b, argc);
-	display_stack(stack_a, 'A');
+	resolver(&stack_a, argc);
 	free_stack(&stack_a);
-	free_stack(&stack_b);
 }

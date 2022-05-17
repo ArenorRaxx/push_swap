@@ -6,7 +6,7 @@
 #    By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/16 13:03:03 by mcorso            #+#    #+#              #
-#    Updated: 2022/03/23 10:47:42 by mcorso           ###   ########.fr        #
+#    Updated: 2022/04/26 17:14:06 by mcorso           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ HEAD			=	./
 
 #	FILES
 SRC_FILE		=	main.c \
+					bruteforce_engine.c \
 					move_manager.c \
 					parsing.c \
-					protogorithm.c \
 					resolver.c \
 					stack_manager.c
 

@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/04/23 10:54:28 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/04/26 17:45:23 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,6 @@ typedef struct s_node {
 	struct s_node	*next;
 }				t_node;
 
-typedef struct s_inst {
-	char			*instruct;
-	struct s_inst	*prev;
-	struct s_inst	*next;
-}				t_inst;
-
-typedef struct s_intop {
-	t_inst	*top;
-}				t_intop;
-
 typedef struct s_top {
 	int		len;
 	t_node	*top;
@@ -49,10 +39,10 @@ int		add_on_bot(t_top *stack, int val);
 void	display_stack(t_top stack_a, char stack);
 
 /*/		LOGICAL MOVEMENTS		/*/
-void	swap(t_top *stack_a, t_top *stack_b, char swap);
-void	push(t_top *stack_a, t_top *stack_b, char swap);
-void	rotate(t_top *stack_a, t_top *stack_b, char swap);
-void	rev_rotate(t_top *stack_a, t_top *stack_b, char swap);
+void	swap(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
+void	push(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
+void	rotate(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
+void	rev_rotate(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
 
 static inline void	logic_swap(t_top *stack)
 {
@@ -125,6 +115,10 @@ char	**formate_args(int argc, char **argv);
 
 /*/		RESOLVER & ALGO			/*/
 
-int		resolver(t_top *stack_a, t_top *stack_b, int argc);
+int		resolver(t_top *stack_a, int argc);
+//		Brute Force
+int		next_set(char **set);
+void	pseudo_exec(char *set, t_top tmp_a);
+void	rev_pseudo_exec(char *set, t_top tmp_a);
 
 #endif
