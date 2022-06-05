@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/04/26 17:45:23 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/05 17:26:32 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,34 +46,42 @@ void	rev_rotate(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
 
 static inline void	logic_swap(t_top *stack)
 {
-	t_node	*sec_node;
 	t_node	*top_node;
+	t_node	*sec_node;
+	t_node	*thd_node;
 
 	top_node = stack->top;
 	sec_node = top_node->next;
-	stack->top = sec_node;
-	sec_node->prev = NULL;
+	thd_node = sec_node->next;
 	top_node->prev = sec_node;
-	top_node->next = sec_node->next;
+	top_node->next = thd_node;
+	sec_node->prev = NULL;
 	sec_node->next = top_node;
-	if (top_node->next)
-		top_node->next->prev = top_node;
-	if (stack->len == 2)
+	if (thd_node)
+		thd_node->prev = top_node;
+	else
 		stack->bottom = top_node;
+	stack->top = sec_node;
 }
 
 static inline void	logic_push(t_top *stack_one, t_top *stack_two)
 {
 	t_node	*top_node_one;
 	t_node	*top_node_two;
+	t_node	*new_top_node;
 
 	top_node_one = stack_one->top;
 	top_node_two = stack_two->top;
-	stack_one->top = top_node_two;
-	stack_two->top = top_node_two->next;
+	new_top_node = top_node_two->next;
+	top_node_two->next = top_node_one;
 	if (top_node_one)
 		top_node_one->prev = top_node_two;
-	top_node_two->next = top_node_one;
+	else
+		stack_one->bottom = top_node_two;
+	if (new_top_node)
+		new_top_node->prev = NULL;
+	stack_one->top = top_node_two;
+	stack_two->top = new_top_node;
 	stack_one->len++;
 	stack_two->len--;
 }
@@ -81,30 +89,34 @@ static inline void	logic_push(t_top *stack_one, t_top *stack_two)
 static inline void	logic_rotate(t_top *stack)
 {
 	t_node	*top_node;
+	t_node	*sec_node;
 	t_node	*bot_node;
 
 	top_node = stack->top;
+	sec_node = top_node->next;
 	bot_node = stack->bottom;
-	stack->bottom = top_node;
-	stack->top = top_node->next;
-	bot_node->next = top_node;
 	top_node->prev = bot_node;
 	top_node->next = NULL;
+	sec_node->prev = NULL;
+	bot_node->next = top_node;
+	stack->top = sec_node;
+	stack->bottom = top_node;
 }
 
 static inline void	logic_reverse_rotate(t_top *stack)
 {
 	t_node	*top_node;
+	t_node	*prebot_node;
 	t_node	*bot_node;
-
 	top_node = stack->top;
+	prebot_node = stack->bottom->prev;
 	bot_node = stack->bottom;
-	stack->top = bot_node;
-	stack->bottom = bot_node->prev;
-	stack->bottom->next = NULL;
 	bot_node->prev = NULL;
 	bot_node->next = top_node;
-	top_node->prev = bot_node;
+	prebot_node->next = NULL;
+	top_node->prev = bot_node;	
+	stack->top = bot_node;
+	stack->bottom = prebot_node;
 }
 
 /*/		PARSING MANAGEMENT		/*/
@@ -117,8 +129,9 @@ char	**formate_args(int argc, char **argv);
 
 int		resolver(t_top *stack_a, int argc);
 //		Brute Force
-int		next_set(char **set);
-void	pseudo_exec(char *set, t_top tmp_a);
-void	rev_pseudo_exec(char *set, t_top tmp_a);
+int		next_set(int **set);
+int		check_set(int *set);
+void	pseudo_exec(int *set, t_top *tmp_a, t_top *tmp_b, int pseudo);
+void	rev_pseudo_exec(int *set, int set_len, t_top *tmp_a, t_top *tmp_b);
 
 #endif

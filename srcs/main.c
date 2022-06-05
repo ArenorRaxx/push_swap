@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:15:46 by mcorso            #+#    #+#             */
-/*   Updated: 2022/04/26 17:53:58 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/05/20 14:22:03 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ int	main(int argc, char **argv)
 		free(formated_args);
 	if (err < 0)
 		return (error(&stack_a));
-	display_stack(stack_a, 'A');
 	resolver(&stack_a, argc);
 	free_stack(&stack_a);
 }

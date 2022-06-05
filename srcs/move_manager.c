@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/17 22:39:52 by mcorso            #+#    #+#             */
-/*   Updated: 2022/04/26 17:43:09 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/05 17:07:31 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ void	push(t_top *stack_a, t_top *stack_b, char swap, int pseudo)
 		logic_push(stack_a, stack_b);
 		print = 1;
 	}
-	if (swap == 'b' && stack_a->top)
+	else if (swap == 'b' && stack_a->top)
 	{
 		logic_push(stack_b, stack_a);
 		print = 1;
 	}
+	else
+		write(1, "Nique !\n", 8);
 	if (print && !pseudo)
 		ft_printf("p%c\n", swap);
 }

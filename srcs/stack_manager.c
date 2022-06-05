@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:24:24 by mcorso            #+#    #+#             */
-/*   Updated: 2022/04/22 15:59:25 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/05 13:46:12 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ int	init_stack(t_top *stack)
 	return (0);
 }
 
-// If mode, add on top. Else, add on bottom.
 int	add_on_bot(t_top *stack, int val)
 {
 	t_node	*new_node;
