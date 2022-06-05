@@ -6,12 +6,12 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:13:14 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/05 17:21:31 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/05 17:57:04 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
+
 static int	utils_set(int **set, int len)
 {
 	int	index;
@@ -27,7 +27,6 @@ static int	utils_set(int **set, int len)
 	set[0][index] = '\0';
 	return (0);
 }
-
 
 void	pseudo_exec(int *set, t_top *tmp_a, t_top *tmp_b, int pseudo)
 {
@@ -52,17 +51,19 @@ void	pseudo_exec(int *set, t_top *tmp_a, t_top *tmp_b, int pseudo)
 			rev_rotate(tmp_a, tmp_b, 'a', pseudo);
 		if (set[i] == 10 || set[i] == 11)
 			rev_rotate(tmp_a, tmp_b, 'b', pseudo);
-		// ft_printf("B top: %p\n", tmp_b->top);
 		i++;
 	}
 }
 
-void	rev_pseudo_exec(int *set, int set_len, t_top *tmp_a, t_top *tmp_b)
+int	rev_pseudo_exec(int *set, int set_len, t_top *tmp_a, t_top *tmp_b)
 {
 	int		len;
-	int		rev_set[set_len + 1];
+	int		*rev_set;
 
 	len = 0;
+	rev_set = malloc(sizeof(*rev_set) * (set_len + 1));
+	if (!rev_set)
+		return (-1);
 	rev_set[set_len] = '\0';
 	while (set_len--)
 	{
@@ -76,18 +77,13 @@ void	rev_pseudo_exec(int *set, int set_len, t_top *tmp_a, t_top *tmp_b)
 			rev_set[set_len] = set[len];
 		len++;
 	}
-	// int i = 0;
-	// write(1, "rev_set: ", 9);
-	// while(rev_set[i] != 0)
-	// 	ft_printf("%i,", rev_set[i++]);
-	// write(1, "\n", 1);
 	pseudo_exec(rev_set, tmp_a, tmp_b, 1);
 }
 
 int	check_set(int *set)
 {
 	int	i;
-	int push[2];
+	int	push[2];
 
 	if (!set)
 		return (-1);

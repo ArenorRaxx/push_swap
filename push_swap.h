@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/05 17:26:32 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/05 17:49:28 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,14 +31,12 @@ typedef struct s_top {
 	t_node	*bottom;
 }				t_top;
 
-int		stack_len(t_top stack);
 int		init_stack(t_top *stack);
 int		free_stack(t_top *top_node);
 int		fill_stack(t_top *stack_a, char **form_args);
-int		add_on_bot(t_top *stack, int val);
 void	display_stack(t_top stack_a, char stack);
 
-/*/		LOGICAL MOVEMENTS		/*/
+/*/		MOVES MANAGER			/*/
 void	swap(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
 void	push(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
 void	rotate(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
@@ -108,13 +106,14 @@ static inline void	logic_reverse_rotate(t_top *stack)
 	t_node	*top_node;
 	t_node	*prebot_node;
 	t_node	*bot_node;
+
 	top_node = stack->top;
 	prebot_node = stack->bottom->prev;
 	bot_node = stack->bottom;
 	bot_node->prev = NULL;
 	bot_node->next = top_node;
 	prebot_node->next = NULL;
-	top_node->prev = bot_node;	
+	top_node->prev = bot_node;
 	stack->top = bot_node;
 	stack->bottom = prebot_node;
 }
@@ -131,7 +130,7 @@ int		resolver(t_top *stack_a, int argc);
 //		Brute Force
 int		next_set(int **set);
 int		check_set(int *set);
+int		rev_pseudo_exec(int *set, int set_len, t_top *tmp_a, t_top *tmp_b);
 void	pseudo_exec(int *set, t_top *tmp_a, t_top *tmp_b, int pseudo);
-void	rev_pseudo_exec(int *set, int set_len, t_top *tmp_a, t_top *tmp_b);
 
 #endif
