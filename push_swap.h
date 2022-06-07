@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 12:31:50 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/05 17:49:28 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/06 12:15:54 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int		free_stack(t_top *top_node);
 int		fill_stack(t_top *stack_a, char **form_args);
 void	display_stack(t_top stack_a, char stack);
 
-/*/		MOVES MANAGER			/*/
+/*/		MOVES MANAGEMENT		/*/
 void	swap(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
 void	push(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
 void	rotate(t_top *stack_a, t_top *stack_b, char swap, int pseudo);
@@ -119,17 +119,18 @@ static inline void	logic_reverse_rotate(t_top *stack)
 }
 
 /*/		PARSING MANAGEMENT		/*/
-
 int		check_tab(char **form_args);
 int		check_args(char **form_args);
 char	**formate_args(int argc, char **argv);
 
 /*/		RESOLVER & ALGO			/*/
-
+int		is_sorted(t_top stack_a);
 int		resolver(t_top *stack_a, int argc);
-//		Brute Force
+//		Move set management
 int		next_set(int **set);
 int		check_set(int *set);
+//		Bruteforce engine
+int		brute_force(t_top *stack_a);
 int		rev_pseudo_exec(int *set, int set_len, t_top *tmp_a, t_top *tmp_b);
 void	pseudo_exec(int *set, t_top *tmp_a, t_top *tmp_b, int pseudo);
 

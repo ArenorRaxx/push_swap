@@ -6,27 +6,11 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:13:14 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/05 17:57:04 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/06 15:08:52 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-static int	utils_set(int **set, int len)
-{
-	int	index;
-
-	if (*set)
-		free(*set);
-	index = 0;
-	*set = malloc(sizeof(**set) * (len + 1));
-	if (!*set)
-		return (-1);
-	while (index < len)
-		set[0][index++] = 1;
-	set[0][index] = '\0';
-	return (0);
-}
 
 void	pseudo_exec(int *set, t_top *tmp_a, t_top *tmp_b, int pseudo)
 {
@@ -78,61 +62,35 @@ int	rev_pseudo_exec(int *set, int set_len, t_top *tmp_a, t_top *tmp_b)
 		len++;
 	}
 	pseudo_exec(rev_set, tmp_a, tmp_b, 1);
-}
-
-int	check_set(int *set)
-{
-	int	i;
-	int	push[2];
-
-	if (!set)
-		return (-1);
-	i = 0;
-	push[0] = 0;
-	push[1] = 0;
-	while (set[i] != '\0')
-	{
-		if (set[i] == 4)
-			push[0]++;
-		if (set[i] == 5)
-			push[1]++;
-		if (push[0] > push[1])
-			return (-1);
-		i++;
-	}
-	if (set[i - 1] == 5)
-		return (-1);
-	if (push[0] != push[1])
-		return (-1);
 	return (0);
 }
 
-int	next_set(int **set)
+int	brute_force(t_top *stack_a)
 {
-	int			index;
-	static int	len = 1;
+	int			set_len;
+	t_top		stack_b;
+	static int	*set;
 
-	index = 0;
-	if (!*set)
+	set_len = 0;
+	stack_b.len = 0;
+	stack_b.top = NULL;
+	stack_b.bottom = NULL;
+	while (is_sorted(*stack_a) < 0)
 	{
-		if (utils_set(set, len) < 0)
-			return (-1);
-		return (len);
+		if (set)
+			if (rev_pseudo_exec(set, set_len, stack_a, &stack_b) < 0)
+				return (-1);
+		while (1)
+		{
+			set_len = next_set(&set);
+			if (set_len < 0)
+				return (-1);
+			if (check_set(set) < 0)
+				continue ;
+			break ;
+		}
+		pseudo_exec(set, stack_a, &stack_b, 1);
 	}
-	if (set[0][index] != 11)
-	{
-		set[0][index]++;
-		return (len);
-	}
-	set[0][index] = 1;
-	while (set[0][++index] == 11)
-		set[0][index] = 1;
-	if (set[0][index] != '\0')
-	{
-		set[0][index] += 1;
-		return (len);
-	}
-	if (utils_set(set, ++len) < 0)
-		return (-1);
-	return (len);
+	pseudo_exec(set, stack_a, &stack_b, 0);
+	return (0);
 }
