@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:24:20 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/06 12:14:04 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/08 14:50:54 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	resolver(t_top *stack_a, int argc)
 	{
 		if (is_sorted(*stack_a) == 0)
 			return (0);
-		else
+		else if (argc <= 7)
 			return (brute_force(stack_a));
 	}	
 	return (0);

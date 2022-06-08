@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 15:14:51 by mcorso            #+#    #+#             */
-/*   Updated: 2022/03/18 16:05:57 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/08 14:57:33 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int	check_tab(char **form_args)
 int	check_args(char **form_args)
 {
 	if (form_args)
-		if (!check_tab(form_args))
-			return (0);
-	return (-1);
+		if (check_tab(form_args))
+			return (-1);
+	return (0);
 }
