@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 15:14:51 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/08 14:57:33 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/08 15:08:29 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	**formate_args(int argc, char **argv)
 	ret = NULL;
 	if (argc >= 2)
 	{
-		ret = malloc(sizeof(*ret) * (argc));
+		ret = malloc(sizeof(*ret) * argc);
 		while (++i < argc)
 			ret[i - 1] = argv[i];
 		ret[i - 1] = NULL;
@@ -42,8 +42,9 @@ int	check_tab(char **form_args)
 		j = 0;
 		while (form_args[i][j])
 		{
-			if (!(form_args[i][j] >= '0' && form_args[i][j] <= '9') && \
-				!(form_args[i][j] == '-' || form_args[i][j] == '+'))
+			if (!ft_isdigit(form_args[i][j]) &&
+				!((form_args[i][j] == '-' || form_args[i][j] == '+') &&
+					ft_isdigit(form_args[i][j + 1])))
 				return (-1);
 			j++;
 		}
