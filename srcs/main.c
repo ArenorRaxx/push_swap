@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:15:46 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/08 14:48:48 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/14 13:46:17 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,8 @@ int	main(int argc, char **argv)
 	if (formated_args)
 		free(formated_args);
 	if (err < 0)
-		return (error(&stack_a, "Parse Error"));
+		return (error(&stack_a, "Error"));
 	if (resolver(&stack_a, argc) < 0)
-		return (error(&stack_a, "Malloc Error"));
+		return (error(&stack_a, "Malloc	Error"));
 	free_stack(&stack_a);
 }
