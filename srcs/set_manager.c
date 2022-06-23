@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 12:02:46 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/07 14:55:44 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/22 15:35:36 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ static int	check_for_pairs(int *set, int i)
 	j = i + 1;
 	if (set[i] <= 3 && set[j] <= 3)
 		return (-1);
-	else if ((set[i] == 4 && set[j] == 5) ||
+	else if ((set[i] == 4 && set[j] == 5) || \
 		(set[i] == 5 && set[j] == 4))
 		return (-1);
 	else if (set[i] == 6 && set[j] >= 7 && set[j] <= 11 && set[j] % 2 == 1)
 		return (-1);
 	else if (set[i] == 7 && (set[j] == 6 || set[j] == 10 || set[j] == 11))
-		return(-1);
+		return (-1);
 	else if (set[i] == 8 && set[j] >= 9 && set[j] <= 11)
 		return (-1);
 	else if (set[i] == 9 && (set[j] >= 6 && set[j] <= 10 && set[j] % 2 == 0))
