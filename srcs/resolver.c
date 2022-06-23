@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:24:20 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/23 14:38:07 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/23 14:44:25 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,7 @@ int	resolver(t_top *stack_a, int argc)
 		convert_stack(stack_a);
 		if (is_sorted(*stack_a) == 0)
 			return (0);
-		else if (argc <= 7)
+		else if (argc <= 6)
 			return (brute_force(stack_a, &stack_b));
 		else
 			radix_sort(stack_a, &stack_b);
