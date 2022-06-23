@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:24:20 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/13 15:25:43 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/23 14:38:07 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,7 @@ static int	convert_stack(t_top *stack_a)
 				curr_node->val = i;
 		curr_node = curr_node->next;
 	}
-	free(val_tab);
-	return (0);
+	return (free(val_tab), 0);
 }
 
 static void	radix_sort(t_top *stack_a, t_top *stack_b)
