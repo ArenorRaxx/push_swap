@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/24 18:13:14 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/06 15:08:52 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/13 15:22:45 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,23 +62,20 @@ int	rev_pseudo_exec(int *set, int set_len, t_top *tmp_a, t_top *tmp_b)
 		len++;
 	}
 	pseudo_exec(rev_set, tmp_a, tmp_b, 1);
+	free(rev_set);
 	return (0);
 }
 
-int	brute_force(t_top *stack_a)
+int	brute_force(t_top *stack_a, t_top *stack_b)
 {
 	int			set_len;
-	t_top		stack_b;
 	static int	*set;
 
 	set_len = 0;
-	stack_b.len = 0;
-	stack_b.top = NULL;
-	stack_b.bottom = NULL;
 	while (is_sorted(*stack_a) < 0)
 	{
 		if (set)
-			if (rev_pseudo_exec(set, set_len, stack_a, &stack_b) < 0)
+			if (rev_pseudo_exec(set, set_len, stack_a, stack_b) < 0)
 				return (-1);
 		while (1)
 		{
@@ -89,8 +86,9 @@ int	brute_force(t_top *stack_a)
 				continue ;
 			break ;
 		}
-		pseudo_exec(set, stack_a, &stack_b, 1);
+		pseudo_exec(set, stack_a, stack_b, 1);
 	}
-	pseudo_exec(set, stack_a, &stack_b, 0);
+	pseudo_exec(set, stack_a, stack_b, 0);
+	free(set);
 	return (0);
 }

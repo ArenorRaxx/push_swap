@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 12:02:46 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/22 15:35:36 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/23 14:02:40 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	utils_set(int **set, int len)
 	if (*set)
 		free(*set);
 	index = 0;
-	*set = malloc(sizeof(**set) * len);
+	*set = malloc(sizeof(**set) * (len + 1));
 	if (!*set)
 		return (-1);
 	while (index < len)
@@ -35,8 +35,7 @@ static int	check_for_pairs(int *set, int i)
 	j = i + 1;
 	if (set[i] <= 3 && set[j] <= 3)
 		return (-1);
-	else if ((set[i] == 4 && set[j] == 5) || \
-		(set[i] == 5 && set[j] == 4))
+	else if ((set[i] == 4 && set[j] == 5) || (set[i] == 5 && set[j] == 4))
 		return (-1);
 	else if (set[i] == 6 && set[j] >= 7 && set[j] <= 11 && set[j] % 2 == 1)
 		return (-1);

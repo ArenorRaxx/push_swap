@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:24:24 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/05 17:39:34 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/12 17:56:03 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static int	add_on_stack(t_top *stack, int val)
 	return (0);
 }
 
-static int	stack_len(t_top stack)
+int	stack_len(t_top stack)
 {
 	int		len;
 	t_node	*curr_node;
