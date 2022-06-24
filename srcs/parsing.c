@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 15:14:51 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/08 15:08:29 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/23 14:02:42 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ int	check_tab(char **form_args)
 {
 	int		i;
 	int		j;
-	int		arg;
+	long	arg;
 
-	i = 0;
-	while (form_args[i])
+	i = -1;
+	while (form_args[++i])
 	{
 		j = 0;
 		while (form_args[i][j])
@@ -50,10 +50,11 @@ int	check_tab(char **form_args)
 		}
 		j = 0;
 		arg = ft_atoi(form_args[i]);
+		if (arg > 2147483647 || arg < -2147483648)
+			return (-1);
 		while (j < i)
 			if (arg == ft_atoi(form_args[j++]))
 				return (-1);
-		i++;
 	}
 	return (0);
 }

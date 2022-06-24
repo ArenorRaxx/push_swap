@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/24 21:14:37 by mcorso            #+#    #+#             */
-/*   Updated: 2021/11/27 17:48:53 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/22 15:42:16 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static char	*ft_isblank(const char *src)
 	return ((char *)str);
 }
 
-int	ft_atoi(const char *str)
+long	ft_atoi(const char *str)
 {
 	int			sign;
 	long		ret_val;
@@ -42,5 +42,5 @@ int	ft_atoi(const char *str)
 	}
 	while (*src >= '0' && *src <= '9')
 		ret_val = (ret_val * 10) + *src++ - 48;
-	return ((int)(ret_val * sign));
+	return (ret_val * sign);
 }
