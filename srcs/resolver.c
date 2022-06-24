@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:24:20 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/13 15:25:43 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/24 17:59:22 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ int	resolver(t_top *stack_a, int argc)
 	stack_b.len = 0;
 	stack_b.top = NULL;
 	stack_b.bottom = NULL;
-	if (argc < 2)
+	if (argc <= 2)
 		return (0);
 	if (argc == 2)
 		if (stack_a->top->val < stack_a->top->next->val)
