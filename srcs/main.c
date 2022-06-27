@@ -6,13 +6,11 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:15:46 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/14 13:46:17 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/27 15:12:20 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdlib.h>
-#include <unistd.h>
 
 static int	error(t_top *stack_a, char *msg)
 {
@@ -65,4 +63,5 @@ int	main(int argc, char **argv)
 	if (resolver(&stack_a, argc) < 0)
 		return (error(&stack_a, "Malloc	Error"));
 	free_stack(&stack_a);
+	return (0);
 }

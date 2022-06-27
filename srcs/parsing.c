@@ -6,12 +6,11 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 15:14:51 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/23 14:02:42 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/27 15:12:00 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdlib.h>
 
 char	**formate_args(int argc, char **argv)
 {

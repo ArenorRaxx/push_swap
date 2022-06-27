@@ -6,12 +6,11 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/16 13:24:24 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/12 17:56:03 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/27 15:11:26 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdlib.h>
 
 static int	add_on_stack(t_top *stack, int val)
 {
