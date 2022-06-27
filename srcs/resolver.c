@@ -6,7 +6,7 @@
 /*   By: mcorso <mcorso@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/18 15:24:20 by mcorso            #+#    #+#             */
-/*   Updated: 2022/06/24 18:01:38 by mcorso           ###   ########.fr       */
+/*   Updated: 2022/06/27 15:04:41 by mcorso           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,9 +72,9 @@ static int	convert_stack(t_top *stack_a)
 	while (curr_node)
 	{
 		i = -1;
-		while (++i < stack_len(*stack_a))
-			if (val_tab[i] == curr_node->val)
-				curr_node->val = i;
+		while (val_tab[++i] != curr_node->val)
+			;
+		curr_node->val = i;
 		curr_node = curr_node->next;
 	}
 	return (free(val_tab), 0);
@@ -130,6 +130,6 @@ int	resolver(t_top *stack_a, int argc)
 			return (brute_force(stack_a, &stack_b));
 		else
 			radix_sort(stack_a, &stack_b);
-	}	
+	}
 	return (0);
 }
