@@ -22,6 +22,8 @@ char	**formate_args(int argc, char **argv)
 	if (argc >= 2)
 	{
 		ret = malloc(sizeof(*ret) * argc);
+		if (!ret)
+			return (NULL);
 		while (++i < argc)
 			ret[i - 1] = argv[i];
 		ret[i - 1] = NULL;
